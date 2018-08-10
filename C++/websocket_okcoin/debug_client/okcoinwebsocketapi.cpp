@@ -201,7 +201,7 @@ void OKCoinWebSocketApiCn::ok_spotcny_cancel_order(string &symbol,string &order_
 //取消订阅
 void OKCoinWebSocketApiCn::remove_ok_spotcny_btc_ticker() //比特币行情数据
 {
-	Remove("ok_sub_spotcny_btc_ticker");
+	Remove("ok_sub_spot_cny_btc_ticker");
 }
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -209,7 +209,10 @@ void OKCoinWebSocketApiCn::remove_ok_spotcny_btc_ticker() //比特币行情数�
 //获取OKCoin现货行情数据
 void OKCoinWebSocketApiCom::ok_spotusd_btc_ticker() //比特币行情数据
 {
-	Emit("ok_sub_spotusd_btc_ticker");
+	Emit("ok_sub_spot_bch_btc_ticker");
+	Emit("ok_sub_spot_ltc_btc_ticker");
+	Emit("ok_sub_spot_elf_btc_ticker");
+	Emit("ok_sub_spot_bch_btc_depth");
 }
 
 //获取OKCoin合约行情数据

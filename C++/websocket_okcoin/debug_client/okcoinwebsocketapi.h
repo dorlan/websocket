@@ -7,8 +7,8 @@ using namespace std;
 
 #include "websocket.h"
 
-#define URL_CN						"wss://real.okcoin.cn:10440/websocket/okcoinapi"
-#define URL_COM						"wss://real.okcoin.com:10440/websocket/okcoinapi"
+#define URL_CN						"wss://real.okex.com:10440/websocket"
+#define URL_COM						"wss://real.okex.com:10440/websocket"
 
 #define MAX_RETRY_COUNT		3000
 
@@ -44,7 +44,7 @@ public:
 	void SetCallBackMessage(websocketpp_callbak_message callbak_message);
 };
 
-class OKCoinWebSocketApiCn:public OKCoinWebSocketApi //国内站
+class OKCoinWebSocketApiCn : public OKCoinWebSocketApi //国内站
 {
 public:
 	OKCoinWebSocketApiCn(string api_key,string secret_key)
@@ -70,7 +70,7 @@ public:
 };
 
 
-class OKCoinWebSocketApiCom:public OKCoinWebSocketApi //国际站
+class OKCoinWebSocketApiCom : public OKCoinWebSocketApi //国际站
 {
 public:
 	OKCoinWebSocketApiCom(string api_key,string secret_key)

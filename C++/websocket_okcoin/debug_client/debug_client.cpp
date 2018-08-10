@@ -81,12 +81,13 @@ int main(int argc, char* argv[])
 	
 	Sleep(3000);
 
-	cout << "输入1订阅比特币当周合约行情，输入2订阅比特币期货指数，输入3取消订阅，输入4关闭连接，请输入：";
-	string i;
-	cin >> i;
+	//cout << "输入1订阅比特币当周合约行情，输入2订阅比特币期货指数，输入3取消订阅，输入4关闭连接，请输入";
+	//string i;
+	//cin >> i;
+	string i = "1";
 	if(i == "1")
 	{
-		comapi->ok_futureusd_btc_ticker_this_week();
+		comapi->ok_spotusd_btc_ticker();
 	}
 	
 	if(i == "2")
@@ -107,14 +108,14 @@ int main(int argc, char* argv[])
 
 	//关闭连接
 	//cnapi->Close();	
-	comapi->Close();
+	//comapi->Close();
 
 	system("pause");
 
 	//释放API实例
 	//delete cnapi;
 	delete comapi;
-	cout << "释放API实例完成。";
+	cout << "释放API实例完成";
 
 	system("pause");
 }

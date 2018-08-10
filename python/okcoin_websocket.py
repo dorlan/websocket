@@ -92,17 +92,21 @@ def futureRealTrades(api_key,secretkey):
 
 def on_open(self):
     #subscribe okcoin.com spot ticker
-    self.send("{'event':'addChannel','channel':'ok_sub_spotusd_btc_ticker','binary':'true'}")
+    print("on_open entry")
+    self.send("{'event':'addChannel','channel':'ok_sub_spot_ltc_btc_ticker'}")
+    self.send("{'event':'addChannel','channel':'ok_sub_spot_bch_btc_ticker'}")
+    self.send("{'event':'addChannel','channel':'ok_sub_spot_ltc_btc_depth'}")
+    self.send("{'event':'addChannel','channel':'ok_sub_spot_bch_btc_depth'}")
 
     #subscribe okcoin.com future this_week ticker
-    #self.send("{'event':'addChannel','channel':'ok_sub_futureusd_btc_ticker_this_week','binary':'true'}")
+    # self.send("{'event':'addChannel','channel':'ok_sub_futureusd_btc_ticker_this_week','binary':'true'}")
 
     #subscribe okcoin.com future depth
     #self.send("{'event':'addChannel','channel':'ok_sub_futureusd_ltc_depth_next_week_20','binary':'true'}")
 
     #subscrib real trades for self
-    #realtradesMsg = realtrades('ok_sub_spotusd_trades',api_key,secret_key)
-    #self.send(realtradesMsg)
+    # realtradesMsg = realtrades('ok_sub_spot_usd_trades',api_key,secret_key)
+    # self.send(realtradesMsg)
 
 
     #spot trade via websocket
@@ -126,8 +130,10 @@ def on_open(self):
     #futureRealTradesMsg = futureRealTrades(api_key,secret_key)
     #self.send(futureRealTradesMsg)
 def on_message(self,evt):
-    data = inflate(evt) #data decompress
-    print (data)
+    print("on_message entry, evt: ", evt)
+    # data = inflate(evt) #data decompress
+    # print (data)
+
 def inflate(data):
     decompress = zlib.decompressobj(
             -zlib.MAX_WBITS  # see above
@@ -137,15 +143,16 @@ def inflate(data):
     return inflated
 
 def on_error(self,evt):
-    print (evt)
+    print ("on_error: ", evt)
 
 def on_close(self,evt):
     print ('DISCONNECT')
 
 if __name__ == "__main__":
-    url = "wss://real.okcoin.com:10440/websocket/okcoinapi"      #if okcoin.cn  change url wss://real.okcoin.cn:10440/websocket/okcoinapi
-    api_key='your api_key which you apply'
-    secret_key = "your secret_key which you apply"
+    # url = "wss://real.okex.com:10440/websocket/okcoinapi"      #if okcoin.cn  change url wss://real.okcoin.cn:10440/websocket/okcoinapi
+    url = "wss://real.okex.com:10440/websocket/okcoinapi"
+    api_key='2ef34ab9-6b1a-4238-96e1-1e0dec7119c9'
+    secret_key = "4256F838E413CE650D828908A1616FDB"
 
     websocket.enableTrace(False)
     if len(sys.argv) < 2:
